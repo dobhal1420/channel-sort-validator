@@ -1,0 +1,56 @@
+# Byte-compiled / optimized Python files
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+env/
+*.env
+
+# IDE-specific files
+.vscode/
+.idea/
+*.code-workspace
+
+# Dependency management files
+*.egg-info/
+dist/
+build/
+*.egg
+*.egg-info
+*.log
+
+# Ignore environment configuration files (if you use .env files)
+.env
+
+# Ignore database files
+*.sqlite3
+
+# Ignore log files (optional, depending on your logging setup)
+*.log
+
+# Ignore compiled Python files (optional, depending on your setup)
+*.pyc
+
+# Ignore local development settings (if applicable)
+local_settings.py
+
+# Ignore user-specific files and directories
+.DS_Store
+Thumbs.db
+
+# Ignore generated documentation (if any)
+docs/_build/
+
+# Ignore pytest cache and coverage reports (if using pytest)
+__pycache__/
+.coverage
+.coverage.*
+htmlcov/
+
+# Ignore Jupyter Notebook checkpoints (if applicable)
+.ipynb_checkpoints/
+
+# Ignore any files or directories you want to exclude
+/channelSortValidatorvenv/
+

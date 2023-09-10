@@ -2,6 +2,6 @@ from enum import Enum as PyEnum
 
 
 class Source(str, PyEnum):
-    source1 = "source1"
-    source2 = "source2"
-    source3 = "source3"
+    source1 = "DVBS"
+    source2 = "DVBT"
+    source3 = "DVBC"

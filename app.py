@@ -3,6 +3,8 @@ from fastapi import FastAPI
 from fastapi import Form, UploadFile, File, HTTPException
 
 from services.csvProcessor import CSVProcessor
+from services.jsonProcessor import JSONProcessor
+from services.sortorderValidator import SortOrderValidator
 from util.deviceType import DeviceType
 from util.source import Source
 
@@ -16,29 +18,20 @@ async def get_configuration():
 
 @app.post("/validate")
 async def validate(device_types: DeviceType = Form(..., description="Select a device type from the dropdown."),
-                   source: Source = Form(..., description="Select a source from the dropdown."),
-                   file1: UploadFile = File(...),
-                   file2: UploadFile = File(...)):
+                   channel_source: Source = Form(..., description="Select a source from the dropdown."),
+                   tv_db_file: UploadFile = File(...),
+                   pre_sort_file: UploadFile = File(...)):
     # Check if the uploaded file has a CSV extension
-    if not file1.filename.endswith('.csv'):
-        raise HTTPException(status_code=400, detail="Uploaded file1 must be in CSV format.")
+    if not tv_db_file.filename.endswith('.csv'):
+        raise HTTPException(status_code=400, detail="Uploaded tv_db_file must be in CSV format.")
 
-    if not file2.filename.endswith('.json'):
-        raise HTTPException(status_code=400, detail="Uploaded file2 must be in json format.")
+    if not pre_sort_file.filename.endswith('.json'):
+        raise HTTPException(status_code=400, detail="Uploaded pre_sort_file must be in json format.")
 
-    csv_data_processed = {}
-    try:
-        with CSVProcessor(file1) as csv_data:
-            csv_data_processed = csv_data
-    except HTTPException as e:
-        raise e
+    validator = SortOrderValidator(tv_db_file, pre_sort_file)
+    validator.validate()
 
-    print(csv_data_processed)
-
-    with open(file2.filename, "wb") as f2:
-        f2.write(file2.file.read())
-
-    return {"deviceTypes": device_types, "source": source}
+    return {"deviceTypes": device_types, "source": channel_source}
 
 
 if __name__ == '__main__':

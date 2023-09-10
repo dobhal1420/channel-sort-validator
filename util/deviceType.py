@@ -2,6 +2,8 @@ from enum import Enum as PyEnum
 
 
 class DeviceType(str, PyEnum):
-    phone = "phone"
-    tablet = "tablet"
-    laptop = "laptop"
+    capri = "Capri"
+    marigold = "Marigold"
+    shine = "Shine"
+    datura = "Datura"
+    vale = "Vale"

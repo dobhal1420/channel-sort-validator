@@ -1,11 +1,13 @@
 import csv
 import pandas as pd
 from fastapi import UploadFile, HTTPException
+from util.source import Source
 
 
 class CSVProcessor:
-    def __init__(self, file: UploadFile):
+    def __init__(self, channel_source: Source, file: UploadFile):
         self.file = file
+        self.channel_source = channel_source
 
     def __enter__(self):
         try:
@@ -17,7 +19,8 @@ class CSVProcessor:
                 # print(data[columns_to_print])
 
                 # Filter based on channel type
-                condition = data['type'] == 'TYPE_DVB_T2'
+
+                condition = data['type'] == self.channel_source.value
                 filtered_data = data[condition]
 
                 # Sort by LCN

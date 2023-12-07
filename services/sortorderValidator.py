@@ -1,9 +1,10 @@
 from http.client import HTTPException
+
 from fastapi import UploadFile, HTTPException
+
 from services.csvProcessor import CSVProcessor
 from services.jsonProcessor import JSONProcessor
 from util.source import Source
-import json
 
 
 class SortOrderValidator:
@@ -50,9 +51,10 @@ class SortOrderValidator:
 
                     # Failure Validation: Channel exist in presort file but placed in overflow area
                     else:
-                        previous_lcn = channel_number_tv_db-1
+                        previous_lcn = channel_number_tv_db - 1
                         message = "Wrong sort order. Presort channel " + channel_name_tv_db + " at LCN " + str(
-                        channel_number_tv_db) + " appearing after non-presort/overflow channel. Check channel at LCN " + str(previous_lcn)
+                            channel_number_tv_db) + " appearing after non-presort/overflow channel. Check channel at LCN " + str(
+                            previous_lcn)
                         print(message)
                         comparison_result.append(message)
                         break
@@ -91,10 +93,3 @@ class SortOrderValidator:
 
         else:
             return {"status": "Fail", "error_details": comparison_result}
-
-
-
-
-
-
-

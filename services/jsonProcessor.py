@@ -1,7 +1,7 @@
+import json
+
 from fastapi import UploadFile, HTTPException
 from pandas._libs import json
-import pandas as pd
-import json
 
 
 class JSONProcessor:

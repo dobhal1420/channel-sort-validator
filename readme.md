@@ -23,15 +23,15 @@ Navigate to swagger url-
 
 http://localhost:8080/docs
 
-How to run create and run docker image of fastApi.
+How to create and run docker image of fastApi?
 
-Run command to create docker image
+Command to create docker image
 
 ```
 docker build -t channel-sort-validator .
 ```
 
-Run command to run docker image
+Command to run docker image
 
 ```
 docker run -p 8080:8080 channel-sort-validator

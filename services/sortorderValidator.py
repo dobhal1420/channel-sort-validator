@@ -53,7 +53,7 @@ class SortOrderValidator:
                     else:
                         previous_lcn = channel_number_tv_db - 1
                         message = "Wrong sort order. Presort channel " + channel_name_tv_db + " at LCN " + str(
-                            channel_number_tv_db) + " appearing after non-presort/overflow channel. Check channel at LCN " + str(
+                            channel_number_tv_db) + " is appearing after non-presort/overflow channel. Check channel at LCN " + str(
                             previous_lcn)
                         print(message)
                         comparison_result.append(message)

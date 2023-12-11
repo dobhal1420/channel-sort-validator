@@ -27,6 +27,7 @@ async def validate(device_types: DeviceType = Form(..., description="Select a de
     if not tv_db_file.filename.endswith('.csv'):
         raise HTTPException(status_code=400, detail="Uploaded tv_db_file must be in CSV format.")
 
+    # Check if the uploaded file has a json extension
     if not pre_sort_file.filename.endswith('.json'):
         raise HTTPException(status_code=400, detail="Uploaded pre_sort_file must be in json format.")
 
